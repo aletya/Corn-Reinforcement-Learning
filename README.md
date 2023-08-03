@@ -22,6 +22,7 @@ Here, I was met with two choices. Either **PPO (Proximal Policy Optimization)** 
 Each episode (iteration) was 1000 days long. This was probably the step I spent the most time on. In the first round of iterations, there was 0 improvement. However, this was probably because my reward scoring wasn't the best--- instead of calculating short term rewards, I calculated long term gain/loss. Thus, if the agent made a bad trade early on, good trades that take place later may be deemed bad.
 
 <img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/edd1d7f4-73f2-43e9-8f16-83397fc5e3c8" width="250" height="250">
+Average gain/loss: 
 
 Next, I changed the reward function to better account for short term, as well as weight the losses to encourage cutting losses early:
 - selling/holding above the previous buy price was good
