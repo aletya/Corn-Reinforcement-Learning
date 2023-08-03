@@ -29,7 +29,8 @@ Next, I changed the reward function to better account for short term, as well as
 - selling/holding slightly below the buy price was bad but not terrible
 - selling way below the buy price was terrible. This was to encourage the RL agent to play safe, minimizing losses rather than holding onto their losses.
 With this model, I saw a bit of improvement. I was plesantly surprised to see that the agent learned not to play so risky, which greatly reduced the standard deviation. However, it was definitely still very random. I think this was because I entirely neglected the overall gain/loss, which meant that even if the agent did terrible overall, if he ended on a good trade it was still marked as beneficial.
-<img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/b0f27967-3f42-493c-a840-66593917e543" width="250" height="250">
+
+<img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/4945481a-ba05-4a1a-b8ec-848f7aa0bcc7" width="250" height="250">
 Average gain/loss: -18.09503063451696
 
 
