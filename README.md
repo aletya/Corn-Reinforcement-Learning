@@ -19,8 +19,7 @@ Reward Scoring: I began with a simple scoring system that scaled directly with p
 ### Step 3: Choosing an RL algorithm
 Here, I was met with two choices. Either **PPO (Proximal Policy Optimization)** or **DQN (Deep Q-Network)**. Both are popular RL algorithms, but I decided to go with PPO, mainly because it was an on-policy algorithm, meaning it could learn with data collected during its current episode. Luckily enough, the **stable_baselines3** provided prebuilt functions that could take my OpenAI Gymnasium enviroment, and run it with the PPO algorithm.
 ### Step 4: Train!
-*Each episode(iteration) was 1000 days long
-This was probably the step I spent the most time on. In the first round of iterations, there was 0 improvement. However, this was probably because my reward scoring wasn't the best--- instead of calculating short term rewards, I calculated long term gain/loss. Thus, if the agent made a bad trade early on, good trades that take place later may be deemed bad.
+Each episode (iteration) was 1000 days long. This was probably the step I spent the most time on. In the first round of iterations, there was 0 improvement. However, this was probably because my reward scoring wasn't the best--- instead of calculating short term rewards, I calculated long term gain/loss. Thus, if the agent made a bad trade early on, good trades that take place later may be deemed bad.
 
 <img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/edd1d7f4-73f2-43e9-8f16-83397fc5e3c8" width="250" height="250">
 
