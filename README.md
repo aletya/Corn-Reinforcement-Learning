@@ -2,7 +2,7 @@
 Alex Yang
 ## Overview
 - Teaching an AI to trade corn from ground zero, based on corn prices and weather.
-- Using historical data, I trained a custom reinforcement learning (RL) agent to trade corn for profit.
+- Using historical data, I trained a custom **reinforcement learning (RL)** agent to trade corn for profit.
 - Language: **Python**
 - Libraries: **OpenAI Gymnasium**, **stable_baselines3**, **pandas**, **numpy**, **matplotlib**
 - Google Collabs Link: https://colab.research.google.com/drive/1hzc0-o3NRSmvXSABePQ1KiwJzx-0C2V3?usp=sharing
@@ -12,7 +12,11 @@ I saw a prety cool video of an AI learning to walk from ground zero, and wanted 
 ### Step 1: Gathering and formating data
 For corn prices, I used **Alpha Vantage**, a free API that provided historical financial market data. Luckily, they had the option to request the data in a pandas database format. As for weather data, I used **Visual Crossing Weather**. The data came in a CSV format, so I converted it to a pandas database. I merged the two based on matching dates, and kept only the price and temperature columns for each day. Finally, I **normalized** the data using a standard **Z-score** scale, an essential step in the RL process to ensure that stability and convergence(large outlier may lead to unstable updates during training), as well as compatibility with the RL algorithm.
 ### Step 2: Creating a custom RL enviroment
-I created a cutom RL enviroment based on the the OpenAI Gymnasium interface, which is a standard library provided by OpenAI that allows one to interact with various (RL) environments in a consistent and unified way. In my case, it was really helpful since it took care of all the behind the scenes processing, and let me focus on the code that would shape the RL agent's enviroment--- namely, their actions, their observation space, and their reward scoring.
-### Step 3: 
-
+I ended up building my custom RL enviroment based on the the **OpenAI Gymnasium** interface, which is a standard library provided by OpenAI that allows one to interact with various (RL) environments in a consistent and unified way. In my case, it was really helpful since it took care of all the behind the scenes processing, and let me focus on the code that would shape the RL agent's enviroment--- namely, their actions, their observation space, and their reward scoring.
+Actions: The actions the RL agent could take each step. 1) Buy. 2) Sell. 3) Hold.
+Observation Space: The information the RL agent could access each round, and base their decisions and pattern recognization off of. In this case, the RL agent was given the corn price, and the average temperature for each day.
+Reward Scoring: I began with a simple scoring system that scaled directly with profit/loss, but it didn't have good results. Afterwards, I changed to a weighted system, where selling/holding above the previous buy price was good, selling/holding slightly below the buy price was bad but not terrible, and selling way below the buy price was terrible. This was to encourage the RL agent to play safe, minimizing losses rather than holding onto their losses.
+### Step 3: Choosing an RL algorithm
+Here, I was met with two choices. Either **PPO (Proximal Policy Optimization)** or **DQN (Deep Q-Network)**. Both are popular RL algorithms, but I decided to go with PPO, mainly because it was an on-policy algorithm, meaning it could learn with data collected during its current episode. Luckily enough, the **stable_baselines3** provided prebuilt functions that could take my OpenAI Gymnasium enviroment, and run it with the PPO algorithm.
 ### Step 4: Train!
+
