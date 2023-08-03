@@ -31,7 +31,7 @@ Next, I changed the reward function to better account for short term, as well as
 With this model, I saw a bit of improvement. I was plesantly surprised to see that the agent learned not to play so risky, which greatly reduced the standard deviation. However, it was definitely still very random. I think this was because I entirely neglected the overall gain/loss, which meant that even if the agent did terrible overall, if he ended on a good trade it was still marked as beneficial.
 
 <img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/4945481a-ba05-4a1a-b8ec-848f7aa0bcc7" width="340" height="250">
-Average gain/loss: -18.09503063451696
+Average gain/loss: -18.10
 
 
 To account for this, I made the reward function a mix of both long and short term gain/loss.
