@@ -21,7 +21,7 @@ Here, I was met with two choices. Either **PPO (Proximal Policy Optimization)** 
 ### Step 4: Train!
 Each episode (iteration) was 1000 days long. This was probably the step I spent the most time on. In the first round of iterations, there was 0 improvement. However, this was probably because my reward scoring wasn't the best--- instead of calculating short term rewards, I calculated long term gain/loss. Thus, if the agent made a bad trade early on, good trades that take place later may be deemed bad.
 
-<img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/edd1d7f4-73f2-43e9-8f16-83397fc5e3c8" width="250" height="250">
+<img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/edd1d7f4-73f2-43e9-8f16-83397fc5e3c8" width="340" height="250">
 Average gain/loss: -207.65
 
 Next, I changed the reward function to better account for short term, as well as weight the losses to encourage cutting losses early:
@@ -30,7 +30,7 @@ Next, I changed the reward function to better account for short term, as well as
 - selling way below the buy price was terrible. This was to encourage the RL agent to play safe, minimizing losses rather than holding onto their losses.
 With this model, I saw a bit of improvement. I was plesantly surprised to see that the agent learned not to play so risky, which greatly reduced the standard deviation. However, it was definitely still very random. I think this was because I entirely neglected the overall gain/loss, which meant that even if the agent did terrible overall, if he ended on a good trade it was still marked as beneficial.
 
-<img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/4945481a-ba05-4a1a-b8ec-848f7aa0bcc7" width="250" height="250">
+<img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/4945481a-ba05-4a1a-b8ec-848f7aa0bcc7" width="340" height="250">
 Average gain/loss: -18.09503063451696
 
 
