@@ -22,12 +22,15 @@ Here, I was met with two choices. Either **PPO (Proximal Policy Optimization)** 
 Each episode (iteration) was 1000 days long. This was probably the step I spent the most time on. In the first round of iterations, there was 0 improvement. However, this was probably because my reward scoring wasn't the best--- instead of calculating short term rewards, I calculated long term gain/loss. Thus, if the agent made a bad trade early on, good trades that take place later may be deemed bad.
 
 <img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/edd1d7f4-73f2-43e9-8f16-83397fc5e3c8" width="250" height="250">
-Average gain/loss: 
+Average gain/loss: -207.65
 
 Next, I changed the reward function to better account for short term, as well as weight the losses to encourage cutting losses early:
 - selling/holding above the previous buy price was good
 - selling/holding slightly below the buy price was bad but not terrible
 - selling way below the buy price was terrible. This was to encourage the RL agent to play safe, minimizing losses rather than holding onto their losses.
-With this model, I saw a bit of improvement, but it was definitely still very random. I think this was because I entirely neglected the overall gain/loss, which meant that even if the agent did terrible overall, if he ended on a good trade it was still marked as beneficial.
+With this model, I saw a bit of improvement. I was plesantly surprised to see that the agent learned not to play so risky, which greatly reduced the standard deviation. However, it was definitely still very random. I think this was because I entirely neglected the overall gain/loss, which meant that even if the agent did terrible overall, if he ended on a good trade it was still marked as beneficial.
+<img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/b0f27967-3f42-493c-a840-66593917e543" width="250" height="250">
+Average gain/loss: -18.09503063451696
+
 
 To account for this, I made the reward function a mix of both long and short term gain/loss.
