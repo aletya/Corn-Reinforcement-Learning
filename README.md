@@ -20,4 +20,13 @@ Reward Scoring: I began with a simple scoring system that scaled directly with p
 Here, I was met with two choices. Either **PPO (Proximal Policy Optimization)** or **DQN (Deep Q-Network)**. Both are popular RL algorithms, but I decided to go with PPO, mainly because it was an on-policy algorithm, meaning it could learn with data collected during its current episode. Luckily enough, the **stable_baselines3** provided prebuilt functions that could take my OpenAI Gymnasium enviroment, and run it with the PPO algorithm.
 ### Step 4: Train!
 This was probably the step I spent the most time on. In iterations 1-500, the was essentially no improvement. However, this was probably because my reward scoring wasn't the best--- instead of calculating short term rewards, I calculated long term gain/loss. Thus, if the agent made a bad trade early on, good trades that take place later may be deemed bad.
+
 <img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/edd1d7f4-73f2-43e9-8f16-83397fc5e3c8" width="250" height="250">
+
+Next, I changed the reward function to better account for short term, as well as weight the losses to encourage cutting losses early:
+- selling/holding above the previous buy price was good
+- selling/holding slightly below the buy price was bad but not terrible
+- selling way below the buy price was terrible. This was to encourage the RL agent to play safe, minimizing losses rather than holding onto their losses.
+With this model, I saw a bit of improvement, but it was definitely still very random. I think this was because I entirely neglected the overall gain/loss, which meant that even if the agent did terrible overall, if he ended on a good trade it was still marked as beneficial.
+
+To account for this, I made the reward function a mix of both long and short term gain/loss.
