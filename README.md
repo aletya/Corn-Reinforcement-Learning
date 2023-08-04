@@ -38,3 +38,6 @@ To account for this, I made the reward function a mix of both long and short ter
 
 <img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/78ad5e0b-c8ba-448d-9721-5857dc5b460a" width="340" height="250">
 Average gain/loss: -19.7
+
+## Conclusion:
+Overall, this was a pretty fun project. Pretty much everything was new to me, so it pretty interesting to go from watching videos on the general concept of reinforcement learning, to really getting a feel for it by seeing how exactly the computer "learned" from ground zero. Although the end result wasn't anything amazing, I'm still satisfied that I was able to get somewhat of a consistent improvement on my 3rd enviroment model. TLDR: Don't trust an AI to trade corn for you. It probably won't work.
