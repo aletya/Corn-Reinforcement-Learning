@@ -34,4 +34,6 @@ With this model, I saw a bit of improvement. I was plesantly surprised to see th
 Average gain/loss: -18.10
 
 
-To account for this, I made the reward function a mix of both long and short term gain/loss.
+To account for this, I made the reward function a mix of both long and short term gain/loss. It took a bit of messing around with the multipliers for each reward component, but I settled for 1/3 to 1/2 long term, and 1/2 to 2/3 short term, depnding on the short term situational multiplier. Applying a least squares regression method, I got gain/loss = .053 * iteration - 32.9 with an r value of 18%, showing some evidence that the agent was finally learning.
+<img src="https://github.com/aletya/Corn-Trading-Reinforcement-Learning/assets/32620988/78ad5e0b-c8ba-448d-9721-5857dc5b460a" width="340" height="250">
+Average gain/loss: -19.7
